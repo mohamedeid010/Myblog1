@@ -15,3 +15,5 @@ Route::get('/', function () {
     return view('welcome');
 });
 Route::get('/posts','PagesController@posts');
+Route::get('/posts/{id}','PagesController@post')->name('post');
+Route::post('/post/store','PagesController@store')->name('post/store');

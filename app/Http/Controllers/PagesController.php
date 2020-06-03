@@ -9,7 +9,19 @@ class PagesController extends Controller
 {
     public function posts()
     {
-       $posts = Post::All();
+        $posts = Post::All();
         return view('content.posts',compact('posts'));
+    }
+
+    public function post($id)
+    {
+        $post = Post::find($id);
+        return view('content.post',compact('post'));
+    }
+
+    public function store()
+    {
+        Post::create(request()->all());
+        return redirect('/posts');
     }
 }
