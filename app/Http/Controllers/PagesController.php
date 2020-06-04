@@ -19,9 +19,21 @@ class PagesController extends Controller
         return view('content.post',compact('post'));
     }
 
-    public function store()
+    public function store(Request $request)
     {
-        Post::create(request()->all());
+        $this->validate(request(),[
+            'title' => 'required',
+            'body' => 'required',
+            'image' => 'image'
+            ]
+        );
+        $img_name = time().$request->image->getClientOriginalExtension();
+        Post::create([
+            'title' => $request->title,
+            'body' => $request->body,
+            'image' => $img_name,
+            ]);
+        $request->image->move(public_path('upload'),$img_name);
         return redirect('/posts');
     }
 }

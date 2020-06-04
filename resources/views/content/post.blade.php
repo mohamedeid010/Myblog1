@@ -17,7 +17,7 @@
                 </p>
                 <p><span class="glyphicon glyphicon-time"></span> Posted on {{ $post->created_at }}</p>
                 <hr>
-                <img class="img-responsive" src="http://placehold.it/900x300" alt="">
+                <img class="img-responsive" src="{{ asset('upload/'.$post->image )}}" alt="" style="width:900px;height:300px;">
                 <hr>
                 <p>{{ $post->body }}</p>
 
