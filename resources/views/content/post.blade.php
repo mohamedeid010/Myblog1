@@ -22,6 +22,21 @@
                 <p>{{ $post->body }}</p>
 
                 <hr>
-         
-                
+         <div class="comments">
+             @foreach($post->comments as $comment)
+             <div class="comment">
+             {{ $comment->body}}
+             </div>
+             @endforeach
+         </div>
+         <br/>
+         <hr>
+         <form method="post" action="{{ route('post/comment',['post' => $post->id]) }}">
+                {{ csrf_field() }}
+                <div class="form-group">
+                    <label for="body">Add Comment</label>
+                    <textarea name="body" class="form-control" rows="3"></textarea>
+                </div>
+                <button type="submit" class="btn btn-default">Submit</button>
+        </form>                 
 @endsection

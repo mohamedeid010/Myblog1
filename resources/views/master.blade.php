@@ -24,6 +24,14 @@
         <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
     <![endif]-->
 
+    <style>
+        .comment {
+            border: 2px solid #ccc;
+            padding: 10px 10px;
+            margin-bottom: 10px;
+        } 
+    </style>
+
 </head>
 
 <body>
