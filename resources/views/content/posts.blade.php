@@ -17,7 +17,7 @@
     </p>
     <p><span class="glyphicon glyphicon-time"></span> {{ $post->created_at }}</p>
     <hr>
-    <img class="img-responsive" src="upload/{{ $post->image }}" alt="" style="width:900px;height:300px;">
+    <img class="img-responsive" src="{{ asset('upload/'.$post->image)}}" alt="" style="width:900px;height:300px;">
     <hr>
     <p>{{ $post->body }}</p>
     <a class="btn btn-primary" href="{{ route('post',['id' => $post->id ])}}">Read More <span class="glyphicon glyphicon-chevron-right"></span></a>

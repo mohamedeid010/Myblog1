@@ -18,3 +18,4 @@ Route::get('/posts','PagesController@posts');
 Route::get('/posts/{id}','PagesController@post')->name('post');
 Route::post('/post/store','PagesController@store')->name('post/store');
 Route::post('/posts/{post}/store','CommentsController@store')->name('post/comment');
+Route::get('/category/{id}/{name}','CategoryController@showposts')->name('category/posts');
