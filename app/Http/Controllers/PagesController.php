@@ -30,6 +30,7 @@ class PagesController extends Controller
         $img_name = time().$request->image->getClientOriginalExtension();
         Post::create([
             'title' => $request->title,
+            'category_id' => $request->category,
             'body' => $request->body,
             'image' => $img_name,
             ]);

@@ -62,6 +62,24 @@
                         <a href="#">Contact</a>
                     </li>
                 </ul>
+
+                <ul class="nav navbar-nav navbar-right">
+                    @if(Auth::check())
+                    <li>
+                        <a href="#"> Welcome {{ Auth::user()->name}}</a>
+                    </li>
+                    <li>
+                        <a href="/logout">Log out</a>
+                    </li>
+                    @else
+                    <li>
+                        <a href="/register">Register</a>
+                    </li>
+                    <li>
+                        <a href="/login">Login</a>
+                    </li>
+                    @endif
+                </ul>
             </div>
             <!-- /.navbar-collapse -->
         </div>

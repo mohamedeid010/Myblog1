@@ -31,6 +31,18 @@
         <label for="title">Title</label>
         <input type="text" name="title" class="form-control" id="exampleInputEtitlemail1" placeholder="title">
         </div>
+
+        <div class="form-group">
+        <label for="Category">Category</label>
+       @if($categories)
+        <select class="form-control" name="category">
+            @foreach($categories as $category)
+            <option value="{{ $category->id}}">{{ $category->name}}1</option>
+            @endforeach
+        </select>
+       @endif
+        </div> 
+
         <div class="form-group">
         <label for="body">Body</label>
         <textarea name="body" class="form-control" rows="3"></textarea>
