@@ -11,9 +11,8 @@ class PagesController extends Controller
 {
     public function posts()
     {
-        //$actions = request()->route()->getAction();
-        //dd($actions);
         $posts = Post::All();
+        
         return view('content.posts',compact('posts'));
     }
 

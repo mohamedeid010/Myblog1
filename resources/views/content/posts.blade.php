@@ -20,7 +20,30 @@
     <img class="img-responsive" src="{{ asset('upload/'.$post->image)}}" alt="" style="width:900px;height:300px;">
     <hr>
     <p>{{ $post->body }}</p>
-    <a class="btn btn-primary" href="{{ route('post',['id' => $post->id ])}}">Read More <span class="glyphicon glyphicon-chevron-right"></span></a>
+    <a class="btn btn-primary" href="{{ route('post',['id' => $post->id ])}}">Read More <span class="glyphicon glyphicon-chevron-right">
+    </span></a>
+    @php
+    $like_count = 0;
+    $dislike_count = 0;
+    $like_class='btn-default';
+    $dislike_class='btn-default';
+    @endphp
+    @foreach($post->likes as $like)
+        @if($like->like == 1)
+            @if(Auth::check() && $like->user_id == Auth::user()->id ) 
+            <?php $like_class='btn-success'; ?>
+            @endif
+            <?php $like_count++ ?>
+        @endif
+        @if($like->like == 0)
+            @if(Auth::check() && $like->user_id == Auth::user()->id ) 
+            <?php $dislike_class='btn-danger'; ?>
+            @endif
+             <?php $dislike_count++; ?>
+        @endif
+    @endforeach
+    <a href="#" class="btn {{ $like_class }}">Like <span class="glyphicon glyphicon-thumbs-up"></span> <span class="badge"> {{$like_count}} </span></a>
+    <a href="#" class="btn {{ $dislike_class }}">Dislike <span class="glyphicon glyphicon-thumbs-down"></span> <span class="badge">{{$dislike_count}}</span></a>
     <hr>
     @endforeach
 
