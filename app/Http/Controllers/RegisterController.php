@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\User;
+use App\Role;
 
 class RegisterController extends Controller
 {
@@ -25,7 +26,7 @@ class RegisterController extends Controller
             'email' => $request->email,
             'password' => bcrypt($request->password),
         ]);
-
+        $user->roles()->attach(Role::where('name','user')->first());    
         Auth()->login($user);
 
         return redirect('/posts');

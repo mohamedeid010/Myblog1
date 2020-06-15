@@ -25,3 +25,13 @@ Route::post('/register','RegisterController@store')->name('register');
 Route::get('/login','LoginController@create');
 Route::post('/login','LoginController@store')->name('login');
 Route::get('/logout','LoginController@destroy');
+
+Route::group(['middleware' => 'roles' , 'roles' =>['admin']], function(){
+    
+Route::get('/admin',[
+    'uses' => 'PagesController@admin',
+    'as' => 'content.admin',
+]);
+
+Route::post('/addrole','PagesController@addrole');
+});
