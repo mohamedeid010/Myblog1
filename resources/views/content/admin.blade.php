@@ -15,10 +15,10 @@
     </tr>
     
         @foreach($users as $user)
-            <form method="post" action="/addrole">
+            <form method="post" action="{{ route ('addrole')}}">
                 {{csrf_field()}}
                 <tr>
-                    <td><input type="hidden" name="email" value="{{ $user->email }}"></td>    
+                <input type="hidden" name="email" value="{{ $user->email }}"> 
                     <td>{{$user->id}}</td>
                     <td>{{$user->name}}</td>
                     <td>{{$user->email}}</td>

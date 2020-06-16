@@ -49,10 +49,11 @@ class PagesController extends Controller
 
     public function addrole(Request $request)
     {
+        
         $user = User::where('email' , $request->email)->first();
-
+        
         $user->roles()->detach();
-
+        
         if($request->role_admin)
         {
             $user->roles()->attach(Role::where('name','admin')->first());
