@@ -42,8 +42,8 @@
              <?php $dislike_count++; ?>
         @endif
     @endforeach
-    <a href="#" class="btn {{ $like_class }}">Like <span class="glyphicon glyphicon-thumbs-up"></span> <span class="badge"> {{$like_count}} </span></a>
-    <a href="#" class="btn {{ $dislike_class }}">Dislike <span class="glyphicon glyphicon-thumbs-down"></span> <span class="badge">{{$dislike_count}}</span></a>
+    <button class="btn {{ $like_class }} like" data-postid="{{ $post->id }}" data-like-status='{{ $like_class }}'>Like <span class="glyphicon glyphicon-thumbs-up"></span> <span class="badge"> {{$like_count}} </span></button>
+    <button class="btn {{ $dislike_class }} dislike">Dislike <span class="glyphicon glyphicon-thumbs-down"></span> <span class="badge">{{$dislike_count}}</span></button>
     <hr>
     @endforeach
 
@@ -90,5 +90,11 @@
                         <a href="#">Newer &rarr;</a>
                     </li>
                 </ul>
-                -->        
+                -->      
+
+                <script>
+                    var url = "{{ route('like')}}";
+                    var token = "{{ Session::token()}}";
+                
+                </script>  
 @endsection
