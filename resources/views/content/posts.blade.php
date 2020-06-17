@@ -42,8 +42,17 @@
              <?php $dislike_count++; ?>
         @endif
     @endforeach
-    <button class="btn {{ $like_class }} like" data-postid="{{ $post->id }}" data-like-status='{{ $like_class }}'>Like <span class="glyphicon glyphicon-thumbs-up"></span> <span class="badge"> {{$like_count}} </span></button>
-    <button class="btn {{ $dislike_class }} dislike">Dislike <span class="glyphicon glyphicon-thumbs-down"></span> <span class="badge">{{$dislike_count}}</span></button>
+    <button class="btn {{ $like_class }} like @if(!Auth::check()) disabled @endif" 
+            data-postid="{{ $post->id }}-l"
+            data-like-status='{{ $like_class }}'>Like <span class="glyphicon glyphicon-thumbs-up"></span> 
+            <span class="badge like-count"> {{$like_count}} </span>
+    </button>
+    <button class="btn {{ $dislike_class }} dislike @if(!Auth::check()) disabled @endif"
+            data-postid="{{ $post->id }}-d"
+            data-like-status='{{ $dislike_class }}'>
+            Dislike <span class="glyphicon glyphicon-thumbs-down"></span> 
+            <span class="badge dislike-count">{{$dislike_count}}</span>
+    </button>
     <hr>
     @endforeach
 
@@ -52,7 +61,7 @@
         {{ csrf_field() }}
         <div class="form-group">
         <label for="title">Title</label>
-        <input type="text" name="title" class="form-control" id="exampleInputEtitlemail1" placeholder="title">
+        <input type="text" name="title" class="form-control" placeholder="title">
         </div>
 
         <div class="form-group">
@@ -72,7 +81,7 @@
         </div>
         <div class="form-group">
         <label for="title">Image</label>
-        <input type="file" name="image" class="form-control" id="exampleInputEtitlemail1" placeholder="image">
+        <input type="file" name="image" class="form-control" placeholder="image">
         </div>
         <button type="submit" class="btn btn-default">Submit</button>
     </form>    
@@ -94,6 +103,7 @@
 
                 <script>
                     var url = "{{ route('like')}}";
+                    var url_dislike = "{{ route('dislike')}}";
                     var token = "{{ Session::token()}}";
                 
                 </script>  

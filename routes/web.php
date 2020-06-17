@@ -26,6 +26,7 @@ Route::get('/login','LoginController@create');
 Route::post('/login','LoginController@store')->name('login');
 Route::get('/logout','LoginController@destroy');
 Route::post('/like','PagesController@like')->name('like');
+Route::post('/dislike','PagesController@dislike')->name('dislike');
 
 Route::group(['middleware' => 'roles' , 'roles' =>['user']], function(){
     

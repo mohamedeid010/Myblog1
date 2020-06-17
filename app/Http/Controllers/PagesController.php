@@ -75,6 +75,7 @@ class PagesController extends Controller
     {
         $like_status = $request->like_s;
         $post_id = json_decode($request->post_id);
+        $change_like=0;
 
         $like = Like::where('post_id',$post_id)->where('user_id',Auth::user()->id)->first();
         if(!$like)
@@ -84,14 +85,62 @@ class PagesController extends Controller
             $like->user_id = Auth::user()->id;
             $like->like = 1;
             $like->save();
+            $is_like=1;
         }
         elseif($like->like == 1)
         {
-             Like::Where('post_id' , $post_id)->where('user_id',Auth::user()->id)->delete();
+            //dd('delete');
+            Like::Where('post_id' , $post_id)->where('user_id',Auth::user()->id)->delete();
+             $is_like=0;
         }
         elseif($like->like == 0)
         {
             Like::Where('post_id' , $post_id)->where('user_id',Auth::user()->id)->update(['like' => 1]);
+            $is_like=1;
+            $change_like=1;
         }
+
+        $response = array(
+            'is_like' => $is_like,
+            'change_like' => $change_like,
+        );
+        return response()->json($response , 200);
+    }
+
+
+    public function dislike(Request $request)
+    {
+        $like_status = $request->like_s;
+        $post_id = json_decode($request->post_id);
+        $change_like=0;
+
+        $dislike = Like::where('post_id',$post_id)->where('user_id',Auth::user()->id)->first();
+        if(!$dislike)
+        {
+            $dislike = new Like;
+            $dislike->post_id = $post_id;
+            $dislike->user_id = Auth::user()->id;
+            $dislike->like = 0;
+            $dislike->save();
+            $dis_like=1;
+        }
+        elseif($dislike->like == 0)
+        {
+            //dd('delete');
+            Like::Where('post_id' , $post_id)->where('user_id',Auth::user()->id)->delete();
+             $dis_like=0;
+        }
+        elseif($dislike->like == 1)
+        {
+            Like::Where('post_id' , $post_id)->where('user_id',Auth::user()->id)->update(['like' => 0]);
+            $dis_like=1;
+            $change_like=1;
+        }
+
+        $response = array(
+            'dis_like' => $dis_like,
+            'change_like' => $change_like,
+        );
+        return response()->json($response , 200);
     }
 }
