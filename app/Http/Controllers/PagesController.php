@@ -8,6 +8,8 @@ use App\Post;
 use App\User;
 use App\Role;
 use App\Like;
+Use App\Comment;
+use DB;
 
 class PagesController extends Controller
 {
@@ -38,6 +40,7 @@ class PagesController extends Controller
             'category_id' => $request->category,
             'body' => $request->body,
             'image' => $img_name,
+            'user_id'=> Auth::user()->id,
             ]);
         $request->image->move(public_path('upload'),$img_name);
         return redirect('/posts');
@@ -142,5 +145,27 @@ class PagesController extends Controller
             'change_like' => $change_like,
         );
         return response()->json($response , 200);
+    }
+
+    public function statistic()
+    {
+        $user_count = User::count();
+        $post_count = Post::count();
+        $comment_count = Comment::count();
+        $likes_count = Like::count();
+        //DB::enableQueryLog();
+        $count_user_posts = User::withCount('posts')->orderBy('posts_count','desc')
+                    ->withCount('comments')->orderBy('comments_count','desc')
+                    ->withCount('likes')->orderBy('likes_count','desc')->first();
+
+                    $count_user_posts2 = User::withCount('likes')->orderBy('likes_count','desc')
+                    ->withCount('comments')->orderBy('comments_count','desc')
+                    ->withCount('posts')->orderBy('posts_count','desc')->first();
+                   // $query = DB::getQueryLog();
+                   // print_r($query);
+        //$count_user_posts = User::withCount('posts')->orderBy('posts_count','desc')->first();
+        dd($count_user_posts2);
+
+        return view('content.statistic',compact('user_count','post_count','comment_count','likes_count'));
     }
 }

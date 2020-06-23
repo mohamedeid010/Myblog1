@@ -11,9 +11,7 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/','HomeController@index');
 Route::get('/posts','PagesController@posts');
 Route::get('/posts/{id}','PagesController@post')->name('post');
 Route::post('/post/store','PagesController@store')->name('post/store');
@@ -27,7 +25,7 @@ Route::post('/login','LoginController@store')->name('login');
 Route::get('/logout','LoginController@destroy');
 Route::post('/like','PagesController@like')->name('like');
 Route::post('/dislike','PagesController@dislike')->name('dislike');
-
+Route::get('/statistic','PagesController@statistic');
 Route::group(['middleware' => 'roles' , 'roles' =>['user']], function(){
     
     Route::get('/admin',[

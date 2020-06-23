@@ -1,0 +1,13 @@
+.ftco-navbar-light, .hero-wrap, .ftco-section {
+    direction: rtl;
+}
+.ml-auto, .mx-auto {
+    margin-right: auto !important;
+}
+.subheading, .slider-text h1 {
+
+    text-align: right;
+}
+.pagination {
+    display: block;
+}
