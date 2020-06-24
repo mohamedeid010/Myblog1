@@ -38,6 +38,21 @@
 	          <li class="nav-item"><a href="blog.html" class="nav-link">المقالات</a></li>
 	          <li class="nav-item"><a href="about.html" class="nav-link">فريق العمل</a></li>
 	          <li class="nav-item"><a href="contact.html" class="nav-link">تواصل معنا</a></li>
+            @if(Auth::check())
+              <li class="nav-item">
+                  <a href="#" class="nav-link"> مرحبا {{ Auth::user()->name}}</a>
+              </li>
+              <li class="nav-item">
+                  <a href="/logout" class="nav-link">تسجيل الخروج</a>
+              </li>
+              @else
+              <li class="nav-item">
+                  <a href="/register" class="nav-link">التسجيل</a>
+              </li>
+              <li class="nav-item">
+                  <a href="/login" class="nav-link">تسجيل الدخول</a>
+              </li>
+            @endif
 	        </ul>
 	      </div>
 	    </div>

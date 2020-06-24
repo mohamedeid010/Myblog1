@@ -15,7 +15,7 @@
    							</div>
    							<div class="col-md-6 col-lg-6 col-xl-4 d-flex">
    								<div class="text w-100 pl-md-3">
-   									<span class="subheading">{{ $post->category->name}}</span>
+   									<span class="subheading"> @if($post->category) {{ $post->category->name }} @endif</span>
    									<h2><a href="blog-single.html">{{$post->title}}</a></h2>
    									<ul class="media-social list-unstyled">
 			                <li class="ftco-animate"><a href="#"><span class="icon-twitter"></span></a></li>
@@ -34,12 +34,12 @@
    				</div>
    			</div>
    			<div class="row mt-5">
-          <div class="col text-center">
-            <div class="block-27">
-              {{ $posts->links()}}
-            </div>
-          </div>
-        </div>
+				<div class="col text-center">
+					<div class="block-27">
+						{{ $posts->links()}}
+					</div>
+				</div>
+        	</div> 
    		</div>
    	</section>
 
