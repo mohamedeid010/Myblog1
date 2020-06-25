@@ -20,6 +20,10 @@ class PagesController extends Controller
         return view('content.posts',compact('posts'));
     }
 
+    public function create()
+    {
+        return view('content.create');
+    }
     public function post($id)
     {
         $post = Post::find($id);

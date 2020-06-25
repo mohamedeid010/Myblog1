@@ -6,7 +6,7 @@
    		<div class="container">
    			<div class="row">
                <div class="col-md-12">
-
+				<a href="{{ route('post/create')}}" class="btn rozee">اضافة مقال</a>
                @foreach($posts as $post)
    					<div class="case">
    						<div class="row">

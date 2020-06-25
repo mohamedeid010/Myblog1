@@ -1,13 +1,26 @@
-.ftco-navbar-light, .hero-wrap, .ftco-section {
+.ftco-navbar-light,
+.hero-wrap,
+.ftco-section {
     direction: rtl;
 }
-.ml-auto, .mx-auto {
+
+.ml-auto,
+.mx-auto {
     margin-right: auto !important;
 }
-.subheading, .slider-text h1 {
 
+.subheading,
+.slider-text h1 {
     text-align: right;
 }
+
 .pagination {
     display: block;
+}
+
+.rozee {
+    color: #fff;
+    background: #f343f3;
+    font-weight: bold;
+    float: right;
 }
