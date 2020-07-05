@@ -26,13 +26,14 @@
                                 <tr>
                                     <td>{{ $post->id}}</td>
                                     <td>{{ $post->title}}</td>
-                                    <td>{{ $post->user->name}}</td>
+                                    <td>@if($post->user) {{ $post->user->name}} @else Guest @endif</td>
                                     <td>control</td>
                                 </tr>
                                 @endforeach
                             @endif
                         </tbody>
                     </table> 
+                    {{ $posts->links()}}
                 </div>
               </div>
 
