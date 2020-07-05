@@ -19,12 +19,12 @@ class LoginController extends Controller
                 'message' => 'email or password not correct',
             ]);
         }
-        return redirect('/posts');
+        return redirect('/');
     }
 
     public function destroy()
     {
         auth()->logout();
-        return redirect('/posts');
+        return redirect('/');
     }
 }

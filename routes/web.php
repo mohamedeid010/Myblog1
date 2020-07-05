@@ -26,13 +26,19 @@ Route::get('/logout','LoginController@destroy');
 Route::post('/like','PagesController@like')->name('like');
 Route::post('/dislike','PagesController@dislike')->name('dislike');
 Route::get('/statistic','PagesController@statistic');
-Route::get('/post/create','PagesController@create')->name('post/create');
-Route::group(['middleware' => 'roles' , 'roles' =>['user']], function(){
+
+Route::group(['middleware' => 'roles' , 'roles' =>['user','admin']], function(){
+    Route::get('/post/create','PagesController@create')->name('post/create');
     
+    
+
+});
+Route::group(['prefix' => 'admin' , 'middleware' => 'roles' , 'roles' =>['admin']], function () {
+    Route::get('/index','Admin\MainController@index');
+    Route::get('/article','Admin\ArticleController@index')->name('article');
     Route::get('/admin',[
         'uses' => 'PagesController@admin',
         'as' => 'content.admin',
     ]);
     Route::post('/addrole','PagesController@addrole')->name('addrole');
-
 });

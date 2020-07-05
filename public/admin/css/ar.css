@@ -1,0 +1,26 @@
+body{
+    direction: rtl !important;
+}
+.sidebar .nav-item .nav-link {
+    text-align: right;
+    width: 10rem;
+}
+.sidebar .nav-item .nav-link[data-toggle=collapse]::after {
+    float: left;
+    content: "\f104" !important;
+    font-weight: bold;
+}
+.navbar-search .input-group{
+    direction: ltr;
+}
+.card-header h6{
+    text-align: right;
+}
+.card-body table thead{
+    color:#fff;
+    text-align: center;
+}
+.card-body table tbody{
+    color:rgb(34, 34, 34);
+    text-align: right;
+}

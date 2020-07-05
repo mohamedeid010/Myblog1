@@ -24,3 +24,15 @@
     font-weight: bold;
     float: right;
 }
+.ftco-footer-widget {
+    text-align: right;
+}
+.ftco-footer .ftco-footer-widget ul li a span {
+    margin: 0px 5px;
+}
+.block-21 .text .heading {
+    margin: 0 15px;
+}
+label {
+    float: right;
+}

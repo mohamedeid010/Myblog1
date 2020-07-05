@@ -17,7 +17,7 @@ class Checkrole
     {
         if($request->user() === null )
         {
-           return redirect('/posts');
+           return redirect('/login');
         }
         
         $actions = $request->route()->getAction();
@@ -28,6 +28,6 @@ class Checkrole
             return $next($request);
         }
 
-        return redirect('/posts');
+        return redirect('/');
     }
 }
