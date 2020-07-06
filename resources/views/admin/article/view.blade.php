@@ -16,6 +16,7 @@
                             <tr class="bg-primary">
                                 <th>#</th>
                                 <th>العنوان</th>
+                                <th>القسم</th>
                                 <th>الكاتب</th>
                                 <th>التحكم</th>
                             </tr>
@@ -26,12 +27,16 @@
                                 <tr>
                                     <td>{{ $post->id}}</td>
                                     <td>{{ $post->title}}</td>
+                                    <td>@if($post->category) {{ $post->category->name}} @endif</td>
                                     <td>@if($post->user) {{ $post->user->name}} @else Guest @endif</td>
                                     <td>
-                                         <a class="btn btn-warning btn-sm" href="{{route('article/edit',['id' => $post->id])}}"><i class="fas fa-edit"></i></a>
-                                        <a class="btn btn-danger btn-sm" href="#" title="delete"><i class="fas fa-trash-alt"></i></a>
-                                        <a href="" class="btn btn-primary"><i class="fas fa-toggle-off"></i></a>
-                                        <a href="" class="btn btn-primary"><i class="fas fa-toggle-on"></i></a>
+                                        <a class="btn btn-warning btn-sm" href="{{route('article/edit',['id' => $post->id])}}"><i class="fas fa-edit"></i></a>
+                                        <a class="btn btn-danger btn-sm" href="{{route('article/delete',['id' => $post->id])}}" title="delete"><i class="fas fa-trash-alt"></i></a>
+                                        @if($post->status == 0)
+                                        <a href="{{route('article/status',['id' => $post->id])}}" class="s-off" title="غير منشور"><i class="fas fa-lock"></i></a>
+                                        @else
+                                        <a href="{{route('article/status',['id' => $post->id])}}" class="s-on" title="منشور"><i class="fas fa-lock-open"></i></a>
+                                        @endif
                                     </td>
                                 </tr>
                                 @endforeach

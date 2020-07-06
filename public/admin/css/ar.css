@@ -38,3 +38,11 @@ body {
 form label span {
     color: red;
 }
+
+.fa-lock{
+    font-size: 23px;
+}
+.fa-lock-open{
+    font-size: 28px;
+    color:green
+}

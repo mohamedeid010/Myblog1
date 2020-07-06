@@ -38,6 +38,9 @@ Route::group(['prefix' => 'admin' , 'middleware' => 'roles' , 'roles' =>['admin'
     Route::get('/article','Admin\ArticleController@index')->name('article');
     Route::get('/article/edit/{id}','Admin\ArticleController@update')->name('article/edit');
     Route::post('/article/save/{id}','Admin\ArticleController@save')->name('article/save');
+    Route::get('/article/delete/{id}','Admin\ArticleController@destroy')->name('article/delete');
+    Route::get('/article/status/{id}','Admin\ArticleController@change_status')->name('article/status');
+
     Route::get('/admin',[
         'uses' => 'PagesController@admin',
         'as' => 'content.admin',
