@@ -36,6 +36,8 @@ Route::group(['middleware' => 'roles' , 'roles' =>['user','admin']], function(){
 Route::group(['prefix' => 'admin' , 'middleware' => 'roles' , 'roles' =>['admin']], function () {
     Route::get('/index','Admin\MainController@index');
     Route::get('/article','Admin\ArticleController@index')->name('article');
+    Route::get('/article/edit/{id}','Admin\ArticleController@update')->name('article/edit');
+    Route::post('/article/save/{id}','Admin\ArticleController@save')->name('article/save');
     Route::get('/admin',[
         'uses' => 'PagesController@admin',
         'as' => 'content.admin',

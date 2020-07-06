@@ -27,13 +27,20 @@
                                     <td>{{ $post->id}}</td>
                                     <td>{{ $post->title}}</td>
                                     <td>@if($post->user) {{ $post->user->name}} @else Guest @endif</td>
-                                    <td>control</td>
+                                    <td>
+                                         <a class="btn btn-warning btn-sm" href="{{route('article/edit',['id' => $post->id])}}"><i class="fas fa-edit"></i></a>
+                                        <a class="btn btn-danger btn-sm" href="#" title="delete"><i class="fas fa-trash-alt"></i></a>
+                                        <a href="" class="btn btn-primary"><i class="fas fa-toggle-off"></i></a>
+                                        <a href="" class="btn btn-primary"><i class="fas fa-toggle-on"></i></a>
+                                    </td>
                                 </tr>
                                 @endforeach
                             @endif
                         </tbody>
                     </table> 
-                    {{ $posts->links()}}
+                    <nav aria-label="Page navigation example">
+                    {{$posts->links("pagination::bootstrap-4")}}
+                    </nav>
                 </div>
               </div>
 
