@@ -41,6 +41,11 @@ Route::group(['prefix' => 'admin' , 'middleware' => 'roles' , 'roles' =>['admin'
     Route::get('/article/delete/{id}','Admin\ArticleController@destroy')->name('article/delete');
     Route::get('/article/status/{id}','Admin\ArticleController@change_status')->name('article/status');
 
+    Route::get('/categories','Admin\CategoriesController@index')->name('categories');
+    Route::get('/category/delete/{id}','Admin\CategoriesController@destroy')->name('category/delete');
+    Route::get('/category/edit/{id}','Admin\CategoriesController@edit')->name('category/edit');
+    Route::post('/category/update/{id}','Admin\CategoriesController@update')->name('category/update');
+
     Route::get('/admin',[
         'uses' => 'PagesController@admin',
         'as' => 'content.admin',
